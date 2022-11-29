@@ -32,7 +32,19 @@ module.exports = {
 			{ host: 'localhost', port: 8060, path: '/?cmd=getLongPollState&current=1', method: 'GET' },
 			null,
 			(err, result) => {
-				console.log(err, result?.body, typeof result?.body, result?.json);
+				console.log(err, result?.body?.slice(0, 20), typeof result?.body, result?.json);
+				done(err && !result?.body);
+			}
+		);
+	},
+
+	"url": function (done) {
+		simple_req(
+			//connect to tpsvr-long-poll
+			{ url: 'http://localhost:8060/?cmd=getLongPollState&current=1', method: 'GET' },
+			null,
+			(err, result) => {
+				console.log(err, result?.body?.slice(0, 20), typeof result?.body, result?.json);
 				done(err && !result?.body);
 			}
 		);
@@ -43,7 +55,7 @@ module.exports = {
 			{ host: 'fjaskldjfhapeqrcfsd.com', path: '/lskfnjalskdfj', method: 'GET' },
 			null,
 			(err, result) => {
-				console.log(err, result?.body, result?.json);
+				console.log(err.message || err, result?.body, result?.json);
 				done(!err);
 			}
 		);
@@ -55,7 +67,7 @@ module.exports = {
 			{ host: 'localhost', port: 8060, path: '/?cmd=getLongPollState', method: 'GET', dataTimeout: 1000 },
 			null,
 			(err, result) => {
-				console.log(err, result?.body, result?.json);
+				console.log(err.message || err, result?.body, result?.json);
 				done(!err);
 			}
 		);
