@@ -1,0 +1,29 @@
+{
+  "name": "simple-req",
+  "version": "1.0.0",
+  "description": "a simple http request for text content",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "simple",
+    "http",
+    "request",
+    "text"
+  ],
+  "author": "fwg",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adf0001/simple-req.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adf0001/simple-req/issues"
+  },
+  "homepage": "https://github.com/adf0001/simple-req#readme"
+}
