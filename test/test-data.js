@@ -4,6 +4,7 @@ simple_req = require("../index.js");
 
 module.exports = {
 
+	/*
 	"text": function (done) {
 		simple_req(
 			{ host: 'myip.ipip.net', method: 'GET' },
@@ -25,6 +26,7 @@ module.exports = {
 			}
 		);
 	},
+	*/
 
 	"try-tpsvr": function (done) {
 		simple_req(
@@ -32,19 +34,31 @@ module.exports = {
 			{ host: 'localhost', port: 8060, path: '/?cmd=getLongPollState&current=1', method: 'GET' },
 			null,
 			(err, result) => {
-				console.log(err, result?.body?.slice(0, 20), typeof result?.body, result?.json);
+				console.log(err, result?.body?.slice(0, 40), typeof result?.body, result?.json);
 				done(err && !result?.body);
 			}
 		);
 	},
 
-	"url": function (done) {
+	".url": function (done) {
 		simple_req(
 			//connect to tpsvr-long-poll
 			{ url: 'http://localhost:8060/?cmd=getLongPollState&current=1', method: 'GET' },
 			null,
 			(err, result) => {
-				console.log(err, result?.body?.slice(0, 20), typeof result?.body, result?.json);
+				console.log(err, result?.body?.slice(0, 40), typeof result?.body, result?.json);
+				done(err && !result?.body);
+			}
+		);
+	},
+
+	".form": function (done) {
+		simple_req(
+			{ url: 'http://httpbin.org/post', method: 'POST', form: true },
+			{ a: 123 },
+			(err, result) => {
+				console.log(err, "body-", result?.body?.slice(0, 40), typeof result?.body, "json-", result?.json);
+				//console.log(result);
 				done(err && !result?.body);
 			}
 		);
