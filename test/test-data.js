@@ -4,30 +4,6 @@ simple_req = require("../index.js");
 
 module.exports = {
 
-	/*
-	"text": function (done) {
-		simple_req(
-			{ host: 'myip.ipip.net', method: 'GET' },
-			null,
-			(err, result) => {
-				console.log(err, result?.body, result?.json);
-				done(err && !result?.body);
-			}
-		);
-	},
-
-	"json": function (done) {
-		simple_req(
-			{ host: 'myip.ipip.net', path: '/json', method: 'GET' },
-			null,
-			(err, result) => {
-				console.log(err, result?.body, result?.json);
-				done(err && !result?.body);
-			}
-		);
-	},
-	*/
-
 	"try-tpsvr": function (done) {
 		simple_req(
 			//connect to tpsvr-long-poll
@@ -69,7 +45,7 @@ module.exports = {
 			{ host: 'fjaskldjfhapeqrcfsd.com', path: '/lskfnjalskdfj', method: 'GET' },
 			null,
 			(err, result) => {
-				console.log(err.message || err, result?.body, result?.json);
+				console.log(err?.message || err, result?.body, result?.json);
 				done(!err);
 			}
 		);
@@ -78,10 +54,13 @@ module.exports = {
 	"error-timeout": function (done) {
 		simple_req(
 			//connect to tpsvr-long-poll
-			{ host: 'localhost', port: 8060, path: '/?cmd=getLongPollState', method: 'GET', dataTimeout: 1000 },
+			{
+				host: 'localhost', port: 8060, path: '/?cmd=getLongPollState', method: 'GET',
+				timeout: 1001, dataTimeout: 1002,
+			},
 			null,
 			(err, result) => {
-				console.log(err.message || err, result?.body, result?.json);
+				console.log(err?.message || err, result?.body, result?.json);
 				done(!err);
 			}
 		);
