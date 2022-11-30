@@ -1,6 +1,6 @@
 ﻿
-var parse_headers = require("./parse-headers");
-var to_form_string = require("./to-form-string");
+var parse_headers = require("./lib/parse-headers");
+var to_form_string = require("./lib/to-form-string");
 
 /*
 browserRequest(requestOptions, requestData, cb)

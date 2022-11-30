@@ -1,12 +1,12 @@
 ﻿
-var node_request = require("./lib/node-request");
-var browser_request = require("./lib/browser-request");
+var simple_req_by_node = require("./simple-req-by-node");
+var simple_req_by_browser = require("./simple-req-by-browser");
 
 module.exports = function (requestOptions, requestData, cb) {
 	if (typeof XMLHttpRequest !== "undefined") {
-		return browser_request(requestOptions, requestData, cb);
+		return simple_req_by_browser(requestOptions, requestData, cb);
 	}
 	else {
-		return node_request(requestOptions, requestData, cb);
+		return simple_req_by_node(requestOptions, requestData, cb);
 	}
 }

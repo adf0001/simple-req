@@ -1,7 +1,7 @@
 ﻿
 var http = require("http");
 
-var to_form_string = require("./to-form-string");
+var to_form_string = require("./lib/to-form-string");
 
 /*
 nodeRequest(requestOptions, requestData, cb)
